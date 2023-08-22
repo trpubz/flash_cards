@@ -13,7 +13,8 @@ class CardGen
   def parse(file_path)
     File.foreach(file_path) do |line|
       question, answer, category = line.chomp.split(',')
-      @cards << Card.new(question, answer, category)
+      # lowercase the answer
+      @cards << Card.new(question, answer.downcase, category)
     end
   end
 end

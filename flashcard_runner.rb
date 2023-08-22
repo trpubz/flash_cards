@@ -16,7 +16,7 @@ deck_size.times do |i|
   puts "This is card number #{i + 1} out of #{deck_size}"
   puts "Question: #{round.current_card.question}"
   # puts "Expected answer: #{round.current_card.answer}"
-  response = gets.chomp  # required to trim new line character from response
+  response = gets.downcase.chomp  # required to trim new line character from response
   puts "Response: #{response}"
   turn = round.take_turn(response)
   puts "#{turn.feedback}"
