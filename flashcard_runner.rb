@@ -16,19 +16,12 @@ deck_size.times do |i|
   puts "This is card number #{i + 1} out of #{deck_size}"
   puts "Question: #{round.current_card.question}"
   # puts "Expected answer: #{round.current_card.answer}"
-  response = gets.downcase.chomp  # required to trim new line character from response
+  response = gets.chomp  # required to trim new line character from response
   puts "Response: #{response}"
   turn = round.take_turn(response)
   puts "#{turn.feedback}"
 end
 
-puts "****** Game over! ******"
-puts "You had #{round.number_correct} correct guesses out of #{deck_size} for a total score of #{round.percent_correct}%"
+puts "\n****** Game over! ******\n"
 
-uniq_turns = round.turns.uniq { |turn| turn.card.category }
-uniq_categories = []
-uniq_turns.each { |turn| uniq_categories << turn.card.category }
-
-uniq_categories.each do |cat|
-  puts "#{cat} - #{round.percent_correct_by_category(cat)}% correct"
-end
+round.round_summary

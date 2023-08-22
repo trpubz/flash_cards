@@ -39,4 +39,14 @@ class Round
     percent_correct(category)
   end
 
+  def round_summary
+    puts "You had #{number_correct} correct guesses out of #{@turns.size} for a total score of #{percent_correct}%"
+
+    uniq_categories = @turns.map { |turn| turn.card.category }.uniq
+
+    uniq_categories.each do |cat|
+      puts "#{cat} - #{percent_correct_by_category(cat)}% correct"
+    end
+  end
+
 end
