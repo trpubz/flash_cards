@@ -20,7 +20,7 @@ class Round
     turns = []
     category.nil? ? turns = @turns : turns = @turns.filter {
       |turn| turn.card.category == category }
-    turns.each { |turn| turn.correct? ? correct += 1 : nil}
+    turns.each { |turn|  correct += 1 if turn.correct? }
     return correct
   end
 
